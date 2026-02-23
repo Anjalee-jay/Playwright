@@ -1,14 +1,22 @@
 {
-  "name": "playwright",
+  "name": "tau-introduction-to-playwright",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:e2e": "npx playwright test",
+    "test:e2e:all": "npx playwright test",
+    "test:e2e:ci": "CI=1 npx playwright test --project=chromium --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL",
+    "test:e2e:dev": "npx playwright test --project=chromium --headed --retries=0 --reporter=line",
+    "test:e2e:smoke": "npx playwright test --grep @smoke --project=chromium",
+    "test:e2e:non-smoke": "npx playwright test --grep-invert @smoke --project=firefox"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.58.2",
-    "@types/node": "^25.3.0"
+    "@applitools/eyes-playwright": "^1.44.3",
+    "@playwright/test": "^1.33.0",
+    "dotenv": "^16.0.3"
   }
 }
